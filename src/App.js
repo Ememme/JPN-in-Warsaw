@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import GoogleMap from 'google-map-react';
+import Map from './Components/map';
+import mapStyle from './mapStyle.json'
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log(mapStyle)
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,6 +21,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Map style={mapStyle}/>
       </div>
     );
   }
