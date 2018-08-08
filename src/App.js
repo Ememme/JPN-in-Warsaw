@@ -16,23 +16,26 @@ class App extends Component {
     this.getZomatoData()
   }
 
-
+  // Fetching data about Japanese restaurants in Warsaw from ZOMATO API
   getZomatoData() {
-    fetch('https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start=1&count=30&lat=52.22967&lon=21.0122287&radius=5000&cuisines=60&sort=rating&order=asc',{
+    fetch('https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start=1&count=30&lat=52.22967&lon=21.0122287&radius=5000&cuisines=60&sort=rating&order=asc/',{
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'user-key': '2993ad9395ee17dae3ca81552220ac5b'
     }})
+    // parses response to JSON
     .then((response) => {
       return response.json();
     })
     .then(fromJSON => {
+    // Getting array of data[20 restaurants] and setting it as state
     const allRestaurants = fromJSON.restaurants
       this.setState({
         allRestaurants: allRestaurants
       })
     })
+    .catch(error => console.error(`Fetch Error =\n`, error));
   };
 
 
@@ -46,7 +49,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        {/* <Map style={mapStyle}/> */}
+        <Map style={mapStyle} allRestaurants={this.state.allRestaurants}/>
         <Footer />
       </div>
     );
