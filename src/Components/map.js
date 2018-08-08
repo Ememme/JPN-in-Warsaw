@@ -39,8 +39,9 @@ class Map extends Component {
         {this.props.allRestaurants.map(item => (
              <Marker
                 tabindex="0"
-                position={{lat: parseFloat(item.restaurant.location.latitude), lng: parseFloat(item.restaurant.location.longitude)}}
-                name={item.restaurant.name}// icon={icon_marker}
+                lat={parseFloat(item.restaurant.location.latitude)}
+                lng={parseFloat(item.restaurant.location.longitude)}
+                name={item.restaurant.name}
                 key={item.restaurant.R.res_id}
              />))}
         </GoogleMapReact>
