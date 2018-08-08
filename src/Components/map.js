@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+// import icon_marker from '../Assets/marker_black.png'
+import Marker from './Marker'
 
 
 class Map extends Component {
@@ -24,6 +26,7 @@ class Map extends Component {
 
 
   render() {
+    const { allRestaurants} = this.props
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '90vh', width: '100%' }}>
@@ -33,6 +36,13 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
+        {this.props.allRestaurants.map(item => (
+             <Marker
+                tabindex="0"
+                position={{lat: parseFloat(item.restaurant.location.latitude), lng: parseFloat(item.restaurant.location.longitude)}}
+                name={item.restaurant.name}// icon={icon_marker}
+                key={item.restaurant.R.res_id}
+             />))}
         </GoogleMapReact>
       </div>
     );
