@@ -4,33 +4,29 @@
 }
 
 
-.App {
+.app {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
 .app-header {
   background-color: #142b48;
-  height: 150px;
-  padding: 20px;
+  height: 100px;
+  padding: 10px;
   color: white;
+  text-align: center;
+
 }
 
 .app-title {
   font-size: 1.5em;
   font-family: 'Gang of Three';
   color: white;
+  display: inline-block;
+  width: fit-content;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.app-logo {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
 }
