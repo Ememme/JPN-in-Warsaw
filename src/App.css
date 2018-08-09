@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Gang of Three';
+    src: url('./Assets/Fonts/go3v2.ttf');
+}
+
+
 .App {
   text-align: center;
 }
@@ -7,15 +13,17 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
+.app-header {
+  background-color: #142b48;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
+.app-title {
   font-size: 1.5em;
+  font-family: 'Gang of Three';
+  color: white;
 }
 
 .App-intro {
