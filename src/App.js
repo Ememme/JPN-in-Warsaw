@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 import Map from './Components/map';
 import mapStyle from './mapStyle.json'
+import Header from './Components/Header'
 import Footer from './Components/Footer'
 import logo from './logo.svg';
 import './App.css';
@@ -42,13 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
         <Map style={mapStyle} allRestaurants={this.state.allRestaurants}/>
         <Footer />
       </div>
