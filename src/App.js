@@ -9,10 +9,15 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    allRestaurants: [],
-    error: false
-  }
+  constructor(props) {
+   super(props);
+   this.state = {
+     allRestaurants: [],
+     error: false
+   };
+ }
+
+
   componentDidMount() {
     this.getZomatoData()
   }
@@ -31,14 +36,19 @@ class App extends Component {
      })
     .then(resp => resp.json())
     // pushing intermediate fetch results to an array
-    .then(respjs => fetchedRestaurants.push(...respjs.restaurants))
+    .then(resp => fetchedRestaurants.push(...resp.restaurants))
     .then(
     // After all 67 restaurant data is fetched, set it as state
       this.setState({
         allRestaurants: fetchedRestaurants
       })
     )
-    .catch(error => console.error(`Fetch Error =\n`, error));
+    .catch((error) => {
+      console.error(`Fetch Error =\n`, error);
+      this.setState({
+        error: true
+        })
+      });
     }
   };
 
