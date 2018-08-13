@@ -4,7 +4,6 @@ import Map from './Components/map';
 import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
