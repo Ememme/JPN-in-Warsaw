@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
+import Loading from './Components/Loading';
 import Map from './Components/map';
 import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
@@ -12,7 +13,8 @@ class App extends Component {
    super(props);
    this.state = {
      allRestaurants: [],
-     error: false
+     error: false,
+     loading: true,
    };
  }
 
@@ -33,13 +35,14 @@ class App extends Component {
         "User-Key": "2993ad9395ee17dae3ca81552220ac5b"
        }
      })
-    .then(resp => resp.json())
+    .then((resp) => { return resp.json()})
     // pushing intermediate fetch results to an array
     .then(resp => fetchedRestaurants.push(...resp.restaurants))
     .then(
     // After all 67 restaurant data is fetched, set it as state
       this.setState({
-        allRestaurants: fetchedRestaurants
+        allRestaurants: fetchedRestaurants,
+        loading: false
       })
     )
     .catch((error) => {
@@ -53,10 +56,14 @@ class App extends Component {
 
 
   render() {
+    // If fetching data from ZOMATO will take long, user will see some image
+    if (this.state.loading === true) {
+          return <Loading />
+        }
     return (
       <div className="App">
         <Header />
-        <Map style={mapStyle} allRestaurants={this.state.allRestaurants}/>
+        <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.loading}/>
         <Footer />
       </div>
     );
