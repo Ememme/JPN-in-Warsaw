@@ -40,10 +40,12 @@ class App extends Component {
     .then(resp => fetchedRestaurants.push(...resp.restaurants))
     .then(
     // After all 67 restaurant data is fetched, set it as state
+
       this.setState({
         allRestaurants: fetchedRestaurants,
         loading: false
       })
+
     )
     .catch((error) => {
       console.error(`Fetch Error =\n`, error);
@@ -59,14 +61,16 @@ class App extends Component {
     // If fetching data from ZOMATO will take long, user will see some image
     if (this.state.loading === true) {
           return <Loading />
-        }
-    return (
-      <div className="App">
-        <Header />
-        <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.loading}/>
-        <Footer />
-      </div>
-    );
+    } else {
+      return (
+        <div className="App">
+          <Header />
+          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.loading}/>
+          <Footer />
+        </div>
+      );  
+    }
+
   }
 }
 
