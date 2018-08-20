@@ -39,10 +39,13 @@ class Map extends Component {
         {this.props.allRestaurants.map(item => (
              <Marker
                 tabindex="0"
-                lat={parseFloat(item.restaurant.location.latitude)}
-                lng={parseFloat(item.restaurant.location.longitude)}
-                name={item.restaurant.name}
                 key={item.restaurant.R.res_id}
+                lat={item.restaurant.location.latitude}
+                lng={item.restaurant.location.longitude}
+                name={item.restaurant.name}
+                rating={item.restaurant.user_rating.aggregate_rating}
+                district={item.restaurant.location.locality}
+                address={item.restaurant.location.address}
              />))}
         </GoogleMapReact>
       </div>
