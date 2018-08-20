@@ -14,64 +14,89 @@ class App extends Component {
    this.state = {
      allRestaurants: [],
      error: false,
-     loading: true,
+     isLoading: true,
    };
  }
 
 
   componentDidMount() {
-    this.getZomatoData()
+    console.log('---component mount---')
+    this.setState({
+      isLoading: true,
+    });
+    console.log(this.state)
+    // this.getZomatoData();
+    // getZomatoData() {
+      let fetchedRestaurants = [];
+      for(let i = 1; i <= 100; i += 20) {
+
+        fetch("https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start="+i.toString()+"&count=20&lat=52.22967&lon=21.0122287&radius=10000&cuisines=60&sort=rating&order=asc", {
+          headers: {
+          Accept: "application/json",
+          "User-Key": "2993ad9395ee17dae3ca81552220ac5b"
+         }
+       })
+      .then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        } else {
+          throw new Error('There is a problem with getting ZOMATO data ...');
+        }
+
+      })
+      // pushing intermediate fetch results to an array
+      .then(resp => fetchedRestaurants.push(...resp.restaurants))
+      .then(
+      // After all 67 restaurant data is fetched, set it as state
+
+        this.setState({
+          allRestaurants: fetchedRestaurants,
+          isLoading: false
+        })
+
+      )
+      .catch((error) => {
+        console.error(`Fetch Error =\n`, error);
+        this.setState({
+          error: true
+          })
+        });
+      }
+    console.log(fetchedRestaurants)
+    // this.setState({
+    //   allRestaurants: fetchedRestaurants,
+    //   isLoading: false
+    // });
+    // };
+
   }
 
   // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
   // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
   // Offset is 20
-  getZomatoData() {
-    let fetchedRestaurants = [];
-    for(let i = 1; i <= 80; i += 20) {
-      fetch("https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start="+i.toString()+"&count=20&lat=52.22967&lon=21.0122287&radius=5000&cuisines=60&sort=rating&order=asc", {
-        headers: {
-        Accept: "application/json",
-        "User-Key": "2993ad9395ee17dae3ca81552220ac5b"
-       }
-     })
-    .then((resp) => { return resp.json()})
-    // pushing intermediate fetch results to an array
-    .then(resp => fetchedRestaurants.push(...resp.restaurants))
-    .then(
-    // After all 67 restaurant data is fetched, set it as state
 
-      this.setState({
-        allRestaurants: fetchedRestaurants,
-        loading: false
-      })
-
-    )
-    .catch((error) => {
-      console.error(`Fetch Error =\n`, error);
-      this.setState({
-        error: true
-        })
-      });
-    }
-  };
 
 
   render() {
     // If fetching data from ZOMATO will take long, user will see some image
-    if (this.state.loading === true) {
-          return <Loading />
+    console.log('--render--')
+    const { allRestaurants, loading } = this.state;
+    if (this.state.isLoading) {
+      return <Loading />
     } else {
       return (
         <div className="App">
           <Header />
-          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.loading}/>
+          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.isLoading}/>
           <Footer />
         </div>
-      );  
+        )
     }
 
   }
+
+
+
 }
 
 export default App;
