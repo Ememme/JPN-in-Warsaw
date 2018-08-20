@@ -36,7 +36,12 @@ class App extends Component {
         allRestaurants: allRestaurants
       })
     })
-    .catch(error => console.error(`Fetch Error =\n`, error));
+    .catch((error) => {
+      console.error(`Fetch Error =\n`, error);
+      this.setState({
+        error: true
+        })
+      });
   };
 
 
