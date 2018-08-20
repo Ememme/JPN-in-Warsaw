@@ -38,10 +38,9 @@ html {
   position:fixed;
   left:0px;
   bottom:0px;
-
-   width:100%;
+  width:100%;
   display: flex;
-  /* justify-content: space-evenly; */
+  align-items: center;
   background-color: #142b48;
   height: 5vh;
   padding: 5px;
@@ -52,21 +51,23 @@ html {
 }
 
 .footer-left {
+  flex: 50%;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 5px;
-  width: 300px;
 }
 
 .footer-credits {
+  flex: 50%;
   display: flex;
-  align-self: center;
   align-items: center;
-  justify-content: center;
 }
 
 .footer-credits img {
   width: 20px;
   height: 20px;
+
+}
+
+.footer-credits a {
+  text-decoration: none;
+  color: white;
 }
