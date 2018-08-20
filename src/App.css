@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
 @font-face {
     font-family: 'Gang of Three';
     src: url('./Assets/Fonts/go3v2.ttf');
@@ -23,4 +31,43 @@
 .app-logo {
   width: 80px;
   height: 80px;
+}
+
+/*  --FOOTER Component */
+.footer {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  width:100%;
+  display: flex;
+  align-items: center;
+  background-color: #142b48;
+  height: 5vh;
+  padding: 5px;
+  color: white;
+  font-size: 0.7em;
+  text-decoration: none;
+
+}
+
+.footer-left {
+  flex: 50%;
+  display: flex;
+}
+
+.footer-credits {
+  flex: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.footer-credits img {
+  width: 20px;
+  height: 20px;
+
+}
+
+.footer-credits a {
+  text-decoration: none;
+  color: white;
 }
