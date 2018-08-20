@@ -20,21 +20,20 @@ class App extends Component {
 
 
   componentDidMount() {
-    console.log('---component mount---')
-    this.setState({
-      isLoading: true,
-    });
+    console.log('---component did mount---')
     console.log(this.state)
-    // this.getZomatoData();
-    // getZomatoData() {
-      let fetchedRestaurants = [];
-      for(let i = 1; i <= 100; i += 20) {
+    // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
+    // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
+    // Offset is 20
+    let fetchedRestaurants = [];
+    for(let i = 1; i <= 100; i += 20) {
 
-        fetch("https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start="+i.toString()+"&count=20&lat=52.22967&lon=21.0122287&radius=10000&cuisines=60&sort=rating&order=asc", {
-          headers: {
-          Accept: "application/json",
-          "User-Key": "2993ad9395ee17dae3ca81552220ac5b"
-         }
+
+      fetch("https://developers.zomato.com/api/v2.1/search?entity_id=96681&entity_type=subzone&start="+i.toString()+"&count=20&lat=52.22967&lon=21.0122287&radius=10000&cuisines=60&sort=rating&order=asc", {
+        headers: {
+        Accept: "application/json",
+        "User-Key": "2993ad9395ee17dae3ca81552220ac5b"
+        }
        })
       .then((resp) => {
         if (resp.ok) {
@@ -42,19 +41,19 @@ class App extends Component {
         } else {
           throw new Error('There is a problem with getting ZOMATO data ...');
         }
-
       })
       // pushing intermediate fetch results to an array
       .then(resp => fetchedRestaurants.push(...resp.restaurants))
-      .then(
-      // After all 67 restaurant data is fetched, set it as state
-
-        this.setState({
-          allRestaurants: fetchedRestaurants,
-          isLoading: false
-        })
-
-      )
+      .then(resp => {
+        // checking condition for number of fetched restaurants
+        if (fetchedRestaurants.length > 60) {
+          // assigning ZOMATO data to state and switching off loading
+          this.setState({
+            allRestaurants: fetchedRestaurants,
+            isLoading: false
+          });
+        }
+      })
       .catch((error) => {
         console.error(`Fetch Error =\n`, error);
         this.setState({
@@ -62,25 +61,16 @@ class App extends Component {
           })
         });
       }
-    console.log(fetchedRestaurants)
-    // this.setState({
-    //   allRestaurants: fetchedRestaurants,
-    //   isLoading: false
-    // });
-    // };
-
   }
 
-  // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
-  // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
-  // Offset is 20
+
 
 
 
   render() {
     // If fetching data from ZOMATO will take long, user will see some image
     console.log('--render--')
-    const { allRestaurants, loading } = this.state;
+    const { allRestaurants, isLoading } = this.state;
     if (this.state.isLoading) {
       return <Loading />
     } else {
