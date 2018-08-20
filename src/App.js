@@ -11,7 +11,8 @@ class App extends Component {
 
   state = {
     allRestaurants: [],
-    error: false
+    error: false,
+    clickedMarker: []
   }
   componentDidMount() {
     this.getZomatoData()
