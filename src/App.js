@@ -5,18 +5,52 @@ import Map from './Components/map';
 import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import SideBar from './Components/SideBar'
 import './App.css';
 
 class App extends Component {
 
   constructor(props) {
-   super(props);
+   super(props)
    this.state = {
+     menuOpen: false,
      allRestaurants: [],
      error: false,
      isLoading: true,
+     districtRestaurants: [],
    };
+
+
+  this.openInfoWindow = this.openInfoWindow.bind(this)
+  this.toggleMenu = this.toggleMenu.bind(this)
  }
+  // Function handles state of menu in Header Component
+  toggleMenu() {
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    });
+  }
+  openInfoWindow = () => {
+    console.log("Logging window")
+    this.state = {
+      isWindowOpen: true,
+    }
+  }
+  // Finding restaurants by Warsaw's districts
+  /* ********** FILTER PLACES LIST ************ */
+  /* ------------------------------------------ */
+  // filterAllRestaurants = district => {
+  //   if (district === 'All') {
+  //     this.setState({
+  //       districtRestaurants: this.state.allRestaurants
+  //     })
+  //   } else {
+  //     this.setState({
+  //       districtRestaurants: this.state.allRestaurants.filter(district => district.location.locality === locality)
+  //     });
+  //   }
+  // }
+
 
 
   componentDidMount() {
@@ -76,8 +110,15 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Header />
-          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.isLoading}/>
+          <Header toggleMenu={this.toggleMenu} menu={this.state.menuOpen}/>
+          {/*SideBar will open depending on menuOpen value  */}
+          {this.state.menuOpen &&
+            <SideBar
+              menuOpen={this.state.menuOpen}
+            />
+          }
+
+          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow} />
           <Footer />
         </div>
         )
