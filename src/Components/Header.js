@@ -18,6 +18,7 @@ class Header extends Component {
   // Function based on this example: https://codepen.io/JorgeGWD/pen/jYMVXY
   toggleActive() {
     console.log('active!')
+    this.props.toggleMenu();
     this.setState({
       addActiveClass: !this.state.addActiveClass,
       ariaExpanded: !this.state.ariaExpanded,
@@ -26,11 +27,13 @@ class Header extends Component {
 
   }
   render() {
+
     let menuClasses = ["hamburger", "hamburger--spring"];
     if (this.state.addActiveClass) {
       menuClasses.push("is-active");
     }
     return (
+
       <header className="app-header">
         <div className="button-wrapper">
           <button id="menu" className={menuClasses.join(' ')} type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="true/false" onClick={this.toggleActive.bind(this)}>
@@ -43,6 +46,7 @@ class Header extends Component {
         <h1 className="app-title">Japanese Restaurants in Warsaw</h1>
       </header>
     )
+    
   }
 }
 
