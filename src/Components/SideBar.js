@@ -1,11 +1,31 @@
 import React, { Component} from 'react'
 
 class SideBar extends Component {
-  
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      all: this.props.locations,
+      Wola: [],
+      SrodPd: [],
+      SrodPn: [],
+      Powisle: []
+    }
+  }
+
+  handleOnChange(event) {
+    console.log(event.target.value)
+    this.props.filter(event.target.value)
+  }
+
   render() {
+    console.log('Locations', this.props.locations)
     return (
 
-      <div className='sidebar'>
+      <div className='sidebar'
+        onChange={this.handleOnChange.bind(this)}
+        >
         <div className='sidebar-heading'><h2>List of restaurants</h2></div>
         <div className="district-selection">
           <select value={this.props.district} aria-label="Find by district" >

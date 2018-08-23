@@ -37,20 +37,13 @@ class App extends Component {
     }
   }
   // Finding restaurants by Warsaw's districts
-  /* ********** FILTER PLACES LIST ************ */
-  /* ------------------------------------------ */
-  // filterAllRestaurants = district => {
-  //   if (district === 'All') {
-  //     this.setState({
-  //       districtRestaurants: this.state.allRestaurants
-  //     })
-  //   } else {
-  //     this.setState({
-  //       districtRestaurants: this.state.allRestaurants.filter(district => district.location.locality === locality)
-  //     });
-  //   }
-  // }
-
+  findRestaurant(value){
+    console.log("Sidebar value" + value)
+   //  let districtRestaurants = this.state.allRestaurants.filter((restaurant) => {
+   //   return restaurant.location.locality.includes(query)
+   // });
+   // console.log(districtRestaurants)
+ }
 
 
   componentDidMount() {
@@ -115,6 +108,8 @@ class App extends Component {
           {this.state.menuOpen &&
             <SideBar
               menuOpen={this.state.menuOpen}
+              locations={this.state.allRestaurants}
+              filter={this.findRestaurant.bind(this)}
             />
           }
 
