@@ -51,11 +51,15 @@ class App extends Component {
     }
 
     let districtRestaurants = localities.filter((locality) => {
-      return locality.includes(value)
+      if (value === "All") {
+        return localities
+      } else {
+        return locality.includes(value)
+      }
     })
 
     console.log(districtRestaurants)
-    
+    // this.setState({allRestaurants: districtRestaurants})
  }
 
 
