@@ -26,7 +26,7 @@ class SideBar extends Component {
         >
         <div className='sidebar-heading'><h2>List of restaurants</h2></div>
         <div className="district-selection">
-          <select value={this.props.district} aria-label="Find by district" >
+          <select value={this.props.districtRestaurants} aria-label="Find by district" >
           <option value="blank" disabled>Find a restaurant in your area</option>
           <option value="All">All</option>
           <option value="Śródmieście Północne">Śródmieście Północne</option>
@@ -38,6 +38,15 @@ class SideBar extends Component {
         {/* <ul className="restaurant-in-district" id="district-list">
 
         </ul> */}
+        <ul className='district-restaurants' id='list'>
+              {this.props.locations.map(place =>
+              <li key={place.restaurant.R.res_id} >
+                <h4 className='location'>
+                  {place.restaurant.name}
+                </h4>
+                <p>{place.restaurant.location.address}</p>
+              </li>)}
+        </ul>
       </div>
     )
   }
