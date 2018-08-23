@@ -37,29 +37,22 @@ class App extends Component {
       isWindowOpen: true,
     }
   }
-  // Finding restaurants by Warsaw's districts
+  // @Function filters restaurant localised in a given districtRestaurants
+  // {params: value} is passed from SideBar Component
   findRestaurant(value){
     console.log("Sidebar value" + '' + value)
     let all = this.state.allRestaurants
-    // console.log(all)
+    console.log(all)
 
-    let localities = [];
-    for (let i=0; i < all.length; i++) {
-
-      localities.push(all[i].restaurant.location.locality);
-      // return localities
-    }
-
-    let districtRestaurants = localities.filter((locality) => {
-      if (value === "All") {
-        return localities
+    let districtRestaurants = all.filter((restaurant) => {
+      if (value !== 'All') {
+        return restaurant.restaurant.location.locality.includes(value)
       } else {
-        return locality.includes(value)
+        return all
       }
-    })
-
-    console.log(districtRestaurants)
-    // this.setState({allRestaurants: districtRestaurants})
+    });
+      console.log(districtRestaurants)
+      // this.setState({districtRestaurants: districtRestaurants})
  }
 
 
