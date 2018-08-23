@@ -44,15 +44,17 @@ class App extends Component {
     let all = this.state.allRestaurants
     console.log(all)
 
-    let districtRestaurants = all.filter((restaurant) => {
+    let districtRestaurantsF = all.filter((restaurant) => {
       if (value !== 'All') {
         return restaurant.restaurant.location.locality.includes(value)
       } else {
         return all
       }
     });
-      console.log(districtRestaurants)
-      // this.setState({districtRestaurants: districtRestaurants})
+      console.log('Dictrict' + districtRestaurantsF.length)
+      this.setState({
+        districtRestaurants: districtRestaurantsF,
+      })
  }
 
 
@@ -87,6 +89,7 @@ class App extends Component {
           // assigning ZOMATO data to state and switching off loading
           this.setState({
             allRestaurants: fetchedRestaurants,
+            districtRestaurants: fetchedRestaurants,
             isLoading: false
           });
         }
@@ -123,7 +126,7 @@ class App extends Component {
             />
           }
 
-          <Map style={mapStyle} allRestaurants={this.state.allRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow} />
+          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow} />
           <Footer />
         </div>
         )

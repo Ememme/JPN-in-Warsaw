@@ -6,11 +6,9 @@ class SideBar extends Component {
     super(props)
 
     this.state = {
-      all: this.props.locations,
-      Wola: [],
-      SrodPd: [],
-      SrodPn: [],
-      Powisle: []
+      allLocations: this.props.locations,
+
+
     }
   }
 
