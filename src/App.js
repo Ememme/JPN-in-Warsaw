@@ -24,6 +24,7 @@ class App extends Component {
   this.openInfoWindow = this.openInfoWindow.bind(this)
   this.toggleMenu = this.toggleMenu.bind(this)
  }
+
   // Function handles state of menu in Header Component
   toggleMenu() {
     this.setState({
@@ -38,11 +39,23 @@ class App extends Component {
   }
   // Finding restaurants by Warsaw's districts
   findRestaurant(value){
-    console.log("Sidebar value" + value)
-   //  let districtRestaurants = this.state.allRestaurants.filter((restaurant) => {
-   //   return restaurant.location.locality.includes(query)
-   // });
-   // console.log(districtRestaurants)
+    console.log("Sidebar value" + '' + value)
+    let all = this.state.allRestaurants
+    // console.log(all)
+
+    let localities = [];
+    for (let i=0; i < all.length; i++) {
+
+      localities.push(all[i].restaurant.location.locality);
+      // return localities
+    }
+
+    let districtRestaurants = localities.filter((locality) => {
+      return locality.includes(value)
+    })
+
+    console.log(districtRestaurants)
+    
  }
 
 
