@@ -125,11 +125,19 @@ html {
   height: 85vh;
   width: 300px;
   background-color: #142b48;
+
   opacity: 0.6;
   text-align: center;
   margin-bottom: 0;
   transition: all 0.5s ease;
   z-index: 100;
+  overflow-y:scroll;
+  color: white;
+
+}
+
+ul.district-restaurants {
+  list-style-type: none;
 }
 
 /*  --FOOTER Component */
