@@ -2,16 +2,6 @@ import React, { Component} from 'react'
 
 class SideBar extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      allLocations: this.props.locations,
-
-
-    }
-  }
-
   handleOnChange(event) {
     console.log(event.target.value)
     this.props.filter(event.target.value)
@@ -35,10 +25,8 @@ class SideBar extends Component {
           <option value="Wola">Wola</option>
           </select>
       </div>
-        {/* <ul className="restaurant-in-district" id="district-list">
 
-        </ul> */}
-        <ul className='district-restaurants' id='list'>
+        <ul className='district-restaurants'>
               {this.props.locations.map(place =>
               <li key={place.restaurant.R.res_id} >
                 <h4 className='location'>

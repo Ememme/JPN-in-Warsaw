@@ -121,7 +121,7 @@ class App extends Component {
           {this.state.menuOpen &&
             <SideBar
               menuOpen={this.state.menuOpen}
-              locations={this.state.allRestaurants}
+              locations={this.state.districtRestaurants}
               filter={this.findRestaurant.bind(this)}
             />
           }
