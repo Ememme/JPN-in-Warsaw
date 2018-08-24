@@ -41,4 +41,3 @@ class SideBar extends Component {
 
 }
 export default SideBar;
-// onChange={event => props.filterPlaces(event.target.value)}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker'
+import InfoWindow from './InfoWindow'
 
 
 class Map extends Component {
@@ -13,14 +14,15 @@ class Map extends Component {
 
   };
 
- //  constructor(props) {
- //   super(props);
- //   this.state = {
- //     allRestaurants: allRestaurants
- //     error: false,
- //     loading: false,
- //   };
- // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      windowOpen: this.props.windowOpen,
+     // allRestaurants: allRestaurants
+     // error: false,
+     // loading: false,
+   };
+ }
 
   mapOptions() {
   	return {
@@ -31,7 +33,7 @@ class Map extends Component {
   }
 
   render() {
-    const { allRestaurants, loading } = this.props
+    const { allRestaurants, loading, openInfoWindow } = this.props
     console.log(allRestaurants)
     return (
       // Important! Always set the container height explicitly
@@ -54,13 +56,18 @@ class Map extends Component {
                  lat={item.restaurant.location.latitude}
                  lng={item.restaurant.location.longitude}
                  name={item.restaurant.name}
-                 rating={item.restaurant.user_rating.aggregate_rating}
-                 district={item.restaurant.location.locality}
-                 address={item.restaurant.location.address}
+                 markerID={item.restaurant.R.res_id}
+                 // rating={item.restaurant.user_rating.aggregate_rating}
+                 // district={item.restaurant.location.locality}
+                 // address={item.restaurant.location.address}
+                 openWindow={this.props.openInfoWindow}
                  />
 
 
              )}
+             {this.state.windowOpen &&
+              <InfoWindow allRestaurants={this.props.allRestaurants} />
+             }
             {/* INFOWINDOW */}
 
         </GoogleMapReact>

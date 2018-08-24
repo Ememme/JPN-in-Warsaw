@@ -18,10 +18,12 @@ class App extends Component {
      error: false,
      isLoading: true,
      districtRestaurants: [],
+     windowOpen: false,
+     markerID: ''
    };
 
 
-  this.openInfoWindow = this.openInfoWindow.bind(this)
+  // this.openInfoWindow = this.openInfoWindow.bind(this)
   this.toggleMenu = this.toggleMenu.bind(this)
  }
 
@@ -31,16 +33,17 @@ class App extends Component {
       menuOpen: !this.state.menuOpen
     });
   }
-  openInfoWindow = () => {
-    console.log("Logging window")
-    this.state = {
-      isWindowOpen: true,
-    }
+  openInfoWindow(markerID) {
+    console.log(`Logging marker: ${markerID}`)
+    this.setState({
+      windowOpen: true,
+      markerID: markerID
+    })
   }
   // @Function filters restaurant localised in a given districtRestaurants
   // {params: value} is passed from SideBar Component
   findRestaurant(value){
-    console.log("Sidebar value" + '' + value)
+    console.log(`Sidebar value ${value}`)
     let all = this.state.allRestaurants
     console.log(all)
 
@@ -110,7 +113,7 @@ class App extends Component {
   render() {
     // If fetching data from ZOMATO will take long, user will see some image
     console.log('--render--')
-    const { allRestaurants, isLoading } = this.state;
+    // const { allRestaurants, isLoading, windowOpen } = this.state;
     if (this.state.isLoading) {
       return <Loading />
     } else {
@@ -126,7 +129,7 @@ class App extends Component {
             />
           }
 
-          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow} />
+          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}/>
           <Footer />
         </div>
         )
