@@ -14,16 +14,6 @@ class Map extends Component {
 
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      windowOpen: this.props.windowOpen,
-     // allRestaurants: allRestaurants
-     // error: false,
-     // loading: false,
-   };
- }
-
   mapOptions() {
   	return {
   		scrollwheel: true,
@@ -55,20 +45,14 @@ class Map extends Component {
                  key={item.restaurant.R.res_id}
                  lat={item.restaurant.location.latitude}
                  lng={item.restaurant.location.longitude}
-                 name={item.restaurant.name}
                  markerID={item.restaurant.R.res_id}
-                 // rating={item.restaurant.user_rating.aggregate_rating}
-                 // district={item.restaurant.location.locality}
-                 // address={item.restaurant.location.address}
-                 openWindow={this.props.openInfoWindow}
+                 restaurant={this.props.selectedRestaurant}
+                 openInfoWindow={this.props.openInfoWindow}
                  />
-
-
              )}
-             {this.state.windowOpen &&
-              <InfoWindow allRestaurants={this.props.allRestaurants} />
+              {this.props.windowOpen &&
+               <InfoWindow key={this.props.markerID} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
              }
-            {/* INFOWINDOW */}
 
         </GoogleMapReact>
       </div>

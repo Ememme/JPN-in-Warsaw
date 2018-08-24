@@ -1,14 +1,16 @@
 import React from 'react'
 
-const InfoWindow = (props) => {
+const InfoWindow = props => {
     return (
       <div className='infoWindow'>
+        {props.restaurant.map(place =>
         <div className='details'>
-          <h2>{props.name}</h2>
-          <p id='info-win-address'>Address: {props.address}</p>
-          <p id='info-win-rating'>Rating: {props.rating}</p>
-          {/* <img src={props.photo} alt="rest" height="50" width="100" height="100"></img> */}
+          <h2>{place.restaurant.name}</h2>
+          <p id='info-win-address'>Address: {place.restaurant.location.address}</p>
+          <p id='info-win-rating'>Rating: {place.restaurant.user_rating.aggregate_rating}</p>
+          <button>Get details on Zomato</button>
         </div>
+      )}
       </div>
     )
   }

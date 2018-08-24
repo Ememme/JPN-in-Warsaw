@@ -19,7 +19,8 @@ class App extends Component {
      isLoading: true,
      districtRestaurants: [],
      windowOpen: false,
-     markerID: ''
+     markerID: '',
+     clickedLocation: []
    };
 
 
@@ -35,9 +36,15 @@ class App extends Component {
   }
   openInfoWindow(markerID) {
     console.log(`Logging marker: ${markerID}`)
+      let place = this.state.districtRestaurants.filter((restaurant) => {
+        return restaurant.restaurant.id === String(markerID)
+      })
+
+    console.log(`Clicked restaurant: ${place}`)
     this.setState({
       windowOpen: true,
-      markerID: markerID
+      markerID: markerID,
+      selectedRestaurant: place
     })
   }
   // @Function filters restaurant localised in a given districtRestaurants
@@ -113,7 +120,7 @@ class App extends Component {
   render() {
     // If fetching data from ZOMATO will take long, user will see some image
     console.log('--render--')
-    // const { allRestaurants, isLoading, windowOpen } = this.state;
+
     if (this.state.isLoading) {
       return <Loading />
     } else {
@@ -129,7 +136,10 @@ class App extends Component {
             />
           }
 
-          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}/>
+          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}
+          markerID={this.state.markerID}
+          selectedRestaurant={this.state.selectedRestaurant}
+        />
           <Footer />
         </div>
         )

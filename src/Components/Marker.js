@@ -4,12 +4,12 @@ import Icon from '../Assets/marker_black.svg'
 const Marker = props => {
 
 
-  const { openWindow, allRestaurants } = props
+  const { openInfoWindow, allRestaurants } = props
 
 
   return (
 
-		<div className="marker" onClick={() => openWindow(props.markerID)} >
+		<div className="marker" onClick={() => openInfoWindow(props.markerID)} >
     	<img src={Icon} alt="marker"  tabIndex="0"/>
   	</div>
 	)
