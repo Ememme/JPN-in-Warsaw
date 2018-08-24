@@ -276,12 +276,15 @@ li {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -200px;
 }
-.close-infowindow {
+.close-infoWindow {
   color: #B6072C;
   font-size: 1.5rem;
-  /* position: relative; */
+  width:15px;
+  height: 15px;
+  position: relative;
+  top: 5px;
+  left: 170px;
 }
 .zomato-link {
   background-color: #142b48;

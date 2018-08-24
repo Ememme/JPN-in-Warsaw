@@ -34,6 +34,7 @@ class Map extends Component {
           defaultCenter={this.props.center}
           // center={this.state.center}
           defaultZoom={this.props.zoom}
+          onClick={this.props.closeInfoWindow}
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
           allRestaurants={this.props.allRestaurants}
@@ -51,7 +52,7 @@ class Map extends Component {
                  />
              )}
               {this.props.windowOpen &&
-               <InfoWindow key={this.props.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
+               <InfoWindow key={this.props.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} closeWindow={this.props.closeInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen} />
              }
 
         </GoogleMapReact>

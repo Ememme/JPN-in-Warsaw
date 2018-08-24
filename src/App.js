@@ -60,6 +60,15 @@ class App extends Component {
       icon: RedIcon
     })
   }
+
+  closeInfoWindow() {
+    this.setState({
+      windowOpen: false,
+      markerID: '',
+      selectedRestaurant: [],
+      icon: RedIcon
+    })
+  }
   // @Function filters restaurant localised in a given districtRestaurants
   // {params: value} is passed from SideBar Component
   findRestaurant(value){
@@ -148,6 +157,7 @@ class App extends Component {
               locations={this.state.districtRestaurants}
               filter={this.findRestaurant.bind(this)}
               openInfoWindow={this.openInfoWindow.bind(this)}
+              closeInfoWindow={this.closeInfoWindow.bind(this)}
             />
           }
           {this.state.error &&
@@ -155,7 +165,9 @@ class App extends Component {
           }
           <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading}
           // icon={this.state.icon}
-         openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}
+         openInfoWindow={this.openInfoWindow.bind(this)}
+         closeInfoWindow={this.closeInfoWindow.bind(this)}
+          windowOpen={this.state.windowOpen}
           markerID={this.state.markerID}
           selectedRestaurant={this.state.selectedRestaurant}
         />
