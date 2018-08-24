@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loading from './Components/Loading';
+import Error from './Components/Error';
 import Map from './Components/map';
 import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
@@ -43,6 +44,7 @@ class App extends Component {
       menuOpen: !this.state.menuOpen
     });
   }
+
   // Function for opening window based on clicked marker, finds a restaurant that is connected to that marker location and sets it as state
   openInfoWindow(markerID) {
     console.log(`Logging marker: ${markerID}`)
@@ -118,7 +120,8 @@ class App extends Component {
       .catch((error) => {
         console.error(`Fetch Error =\n`, error);
         this.setState({
-          error: true
+          error: true,
+          isLoading: false
           })
         });
       }
@@ -147,7 +150,9 @@ class App extends Component {
               openInfoWindow={this.openInfoWindow.bind(this)}
             />
           }
-
+          {this.state.error &&
+            <Error />
+          }
           <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading}
           // icon={this.state.icon}
          openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}
