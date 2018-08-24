@@ -8,7 +8,7 @@ const InfoWindow = props => {
           <h2>{place.restaurant.name}</h2>
           <p id='info-win-address'>Address: {place.restaurant.location.address}</p>
           <p id='info-win-rating'>Rating: {place.restaurant.user_rating.aggregate_rating}</p>
-          <button>Get details on Zomato</button>
+          <button className='zomato-link'><a href={place.restaurant.events_url}>Get details on Zomato</a></button>
         </div>
       )}
       </div>

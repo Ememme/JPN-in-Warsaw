@@ -178,3 +178,32 @@ ul.district-restaurants {
   text-decoration: none;
   color: white;
 }
+
+
+/* InfoWindow */
+.infoWindow {
+  background-color: white;
+  border: 3px solid  #142b48;
+  border-radius: 3px;
+  color: black;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -200px;
+}
+
+.zomato-link {
+  background-color: #142b48;
+  color: white;
+  width: 140px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.zomato-link a {
+  text-decoration: none;
+  color: white;
+}
