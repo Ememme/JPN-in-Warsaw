@@ -34,7 +34,7 @@ html {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: white;
+  background-color: #B6072C;
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -196,9 +196,9 @@ html {
   display: block;
   position: absolute;
   height: 85vh;
-  width: 300px;
+  width: 20vw;
   background-color: #142b48;
-
+  padding-left: 0px;
   opacity: 0.6;
   text-align: center;
   margin-bottom: 0;
@@ -211,8 +211,19 @@ html {
 
 ul.district-restaurants {
   list-style-type: none;
+  padding-left: 0px;
 }
 
+li {
+  padding-left: 0px;
+  border: 1px solid #142b48;
+}
+.location:hover,
+.location:active {
+  background-color: white;
+  color: #142b48;
+  width: auto;
+}
 /*  --FOOTER Component */
 .footer {
   position:fixed;
@@ -267,7 +278,11 @@ ul.district-restaurants {
   position: relative;
   top: -200px;
 }
-
+.close-infowindow {
+  color: #B6072C;
+  font-size: 1.5rem;
+  /* position: relative; */
+}
 .zomato-link {
   background-color: #142b48;
   color: white;
