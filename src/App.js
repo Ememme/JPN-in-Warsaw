@@ -13,18 +13,24 @@ class App extends Component {
   constructor(props) {
    super(props)
    this.state = {
+     // used for handling menu in Header
      menuOpen: false,
+     // data from ZomatoAPI
      allRestaurants: [],
+     // indication of error while loading ZomatoAPI
      error: false,
+     // manages Loading Component
      isLoading: true,
+     // restaurants filtered by district
      districtRestaurants: [],
+     // flag for opening InfoWindow
      windowOpen: false,
+     // id of clicked marker
      markerID: '',
-     clickedLocation: []
+     // restaurant connected to clicked marker
+     selectedRestaurant: []
    };
 
-
-  // this.openInfoWindow = this.openInfoWindow.bind(this)
   this.toggleMenu = this.toggleMenu.bind(this)
  }
 
@@ -34,6 +40,7 @@ class App extends Component {
       menuOpen: !this.state.menuOpen
     });
   }
+  // Function for opening window based on clicked marker, finds a restaurant that is connected to that marker location and sets it as state
   openInfoWindow(markerID) {
     console.log(`Logging marker: ${markerID}`)
       let place = this.state.districtRestaurants.filter((restaurant) => {
