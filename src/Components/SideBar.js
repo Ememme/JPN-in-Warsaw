@@ -29,12 +29,12 @@ class SideBar extends Component {
           </select>
       </div>
 
-        <ul className='district-restaurants'>
+        <ul className='district-restaurants' >
               {this.props.locations.map(item =>
               <li key={item.restaurant.R.res_id}
                 onClick={() => openInfoWindow(item.restaurant.R.res_id)}
-                >
-                <h4 className='location'>
+                className='location'>
+                <h4 className='location-name'>
                   {item.restaurant.name}
                 </h4>
 
