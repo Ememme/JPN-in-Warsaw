@@ -24,7 +24,13 @@ class Loading extends React.Component {
       // <Header />
       //
       // <Loading />
+    <div className="loader">
       <p>{this.state.text}</p>
+      <div className="sk-double-bounce">
+        <div className="sk-child sk-double-bounce1"></div>
+        <div className="sk-child sk-double-bounce2"></div>
+      </div>
+    </div>
       // <Footer />
     )
 

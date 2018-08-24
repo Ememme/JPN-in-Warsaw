@@ -10,6 +10,65 @@ html {
     font-family: 'Gang of Three';
     src: url('./Assets/Fonts/go3v2.ttf');
 }
+/*  --LOADING Component*/
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #142b48;
+  width: 100vh;
+  height: 100vh;
+  color: #B6072C;
+  text-align: center;
+  font-family: 'Gang of Three';
+}
+/*Source for spinner: https://github.com/tobiasahlin/SpinKit/blob/master/css/spinners/2-double-bounce.css  */
+.sk-double-bounce {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 40px auto;
+}
+.sk-double-bounce .sk-child {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: sk-doubleBounce 2s infinite ease-in-out;
+          animation: sk-doubleBounce 2s infinite ease-in-out;
+}
+  .sk-double-bounce .sk-double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+  }
+
+@-webkit-keyframes sk-doubleBounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes sk-doubleBounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
 /* --- HEADER Component */
 .app-header {
   background-color: #142b48;
