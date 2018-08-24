@@ -21,9 +21,7 @@ class Loading extends React.Component {
   render() {
 
     return (
-      // <Header />
-      //
-      // <Loading />
+
     <div className="loader">
       <p>{this.state.text}</p>
       <div className="sk-double-bounce">
@@ -31,7 +29,7 @@ class Loading extends React.Component {
         <div className="sk-child sk-double-bounce2"></div>
       </div>
     </div>
-      // <Footer />
+  
     )
 
   }
