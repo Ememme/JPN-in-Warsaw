@@ -17,11 +17,11 @@ html {
   justify-content: center;
   align-items: center;
   background-color: #142b48;
-  width: 100vh;
   height: 100vh;
   color: #B6072C;
   text-align: center;
   font-family: 'Gang of Three';
+  font-size: 2em;
 }
 /*Source for spinner: https://github.com/tobiasahlin/SpinKit/blob/master/css/spinners/2-double-bounce.css  */
 .sk-double-bounce {
