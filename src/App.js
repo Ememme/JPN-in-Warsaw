@@ -144,6 +144,7 @@ class App extends Component {
               menuOpen={this.state.menuOpen}
               locations={this.state.districtRestaurants}
               filter={this.findRestaurant.bind(this)}
+              openInfoWindow={this.openInfoWindow.bind(this)}
             />
           }
 

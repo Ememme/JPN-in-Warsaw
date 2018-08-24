@@ -7,8 +7,11 @@ class SideBar extends Component {
     this.props.filter(event.target.value)
   }
 
+
+
   render() {
     console.log('Locations', this.props.locations)
+    const { openInfoWindow } = this.props
     return (
 
       <div className='sidebar'
@@ -27,12 +30,14 @@ class SideBar extends Component {
       </div>
 
         <ul className='district-restaurants'>
-              {this.props.locations.map(place =>
-              <li key={place.restaurant.R.res_id} >
+              {this.props.locations.map(item =>
+              <li key={item.restaurant.R.res_id}
+                onClick={() => openInfoWindow(item.restaurant.R.res_id)}
+                >
                 <h4 className='location'>
-                  {place.restaurant.name}
+                  {item.restaurant.name}
                 </h4>
-                <p>{place.restaurant.location.address}</p>
+
               </li>)}
         </ul>
       </div>

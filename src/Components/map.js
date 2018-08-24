@@ -51,7 +51,7 @@ class Map extends Component {
                  />
              )}
               {this.props.windowOpen &&
-               <InfoWindow key={this.props.restaurant.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
+               <InfoWindow key={this.props.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
              }
 
         </GoogleMapReact>
