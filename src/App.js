@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
-import GoogleMap from 'google-map-react';
 import Loading from './Components/Loading';
 import Map from './Components/map';
 import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import SideBar from './Components/SideBar'
+import Icon from './Assets/marker_black.svg'
+import RedIcon from './Assets/restaurant-locator-red.svg'
+
 import './App.css';
 
 class App extends Component {
 
   constructor(props) {
-   super(props)
-   this.state = {
+    super(props)
+    this.state = {
      // used for handling menu in Header
-     menuOpen: false,
+    menuOpen: false,
      // data from ZomatoAPI
-     allRestaurants: [],
+    allRestaurants: [],
      // indication of error while loading ZomatoAPI
-     error: false,
+    error: false,
      // manages Loading Component
-     isLoading: true,
+    isLoading: true,
      // restaurants filtered by district
-     districtRestaurants: [],
+    districtRestaurants: [],
      // flag for opening InfoWindow
-     windowOpen: false,
+    windowOpen: false,
      // id of clicked marker
-     markerID: '',
+    markerID: '',
      // restaurant connected to clicked marker
-     selectedRestaurant: []
+    selectedRestaurant: [],
+    icon: Icon
    };
 
   this.toggleMenu = this.toggleMenu.bind(this)
@@ -51,7 +54,8 @@ class App extends Component {
     this.setState({
       windowOpen: true,
       markerID: markerID,
-      selectedRestaurant: place
+      selectedRestaurant: place,
+      icon: RedIcon
     })
   }
   // @Function filters restaurant localised in a given districtRestaurants
@@ -143,7 +147,9 @@ class App extends Component {
             />
           }
 
-          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading} openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}
+          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading}
+          // icon={this.state.icon}
+         openInfoWindow={this.openInfoWindow.bind(this)} windowOpen={this.state.windowOpen}
           markerID={this.state.markerID}
           selectedRestaurant={this.state.selectedRestaurant}
         />

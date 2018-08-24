@@ -42,7 +42,7 @@ class Map extends Component {
           {/****************** MARKERS ********************/}
              {this.props.allRestaurants.map((item) =>
                  <Marker
-                 key={item.restaurant.R.res_id}
+                 key={item.restaurant.id}
                  lat={item.restaurant.location.latitude}
                  lng={item.restaurant.location.longitude}
                  markerID={item.restaurant.R.res_id}
@@ -51,7 +51,7 @@ class Map extends Component {
                  />
              )}
               {this.props.windowOpen &&
-               <InfoWindow key={this.props.markerID} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
+               <InfoWindow key={this.props.restaurant.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen}/>
              }
 
         </GoogleMapReact>

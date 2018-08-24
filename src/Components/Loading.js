@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 // from ReactBootCamp by T.McGinnis
 class Loading extends React.Component {
   constructor(props) {

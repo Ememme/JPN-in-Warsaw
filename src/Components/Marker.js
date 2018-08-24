@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Icon from '../Assets/marker_black.svg'
+import RedIcon from '../Assets/restaurant-locator-red.svg'
 
 const Marker = props => {
 
 
-  const { openInfoWindow, allRestaurants } = props
+  const { openInfoWindow, allRestaurants, icon } = props
 
 
   return (
 
 		<div className="marker" onClick={() => openInfoWindow(props.markerID)} >
-    	<img src={Icon} alt="marker"  tabIndex="0"/>
+    	<img src={Icon} alt="marker" tabIndex="0"/>
   	</div>
 	)
 }
