@@ -24,7 +24,7 @@ class Map extends Component {
 
   render() {
     const { allRestaurants, loading, openInfoWindow } = this.props
-    console.log(allRestaurants)
+
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '90vh', width: '100%' }}>
@@ -38,6 +38,11 @@ class Map extends Component {
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
           allRestaurants={this.props.allRestaurants}
+          onTilesLoaded={() => {
+            const loadedMap = document.querySelector('iframe');
+            loadedMap.setAttribute('title', 'Japanese restaurants in Warsaw');
+            loadedMap.setAttribute('role', 'application');
+            }}
         >
 
           {/****************** MARKERS ********************/}
