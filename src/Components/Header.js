@@ -10,21 +10,21 @@ class Header extends Component {
       // 'is-active' class is used to toggle hamburger menu with CSS
       addActiveClass: false,
       // ariaExpanded to indicate to visually impaired users whether the menu is opened or closed.
-      ariaExpanded: false,
+      ariaExpanded: true,
       // flag for sidebar
       menuOpen: false
     }
   }
   // Function based on this example: https://codepen.io/JorgeGWD/pen/jYMVXY
   toggleActive() {
-    console.log('active!')
     this.props.toggleMenu();
     this.setState({
       addActiveClass: !this.state.addActiveClass,
       ariaExpanded: !this.state.ariaExpanded,
       menuOpen: !this.state.menuOpen
     });
-
+    const menuButton = document.getElementById("menu");
+    menuButton.setAttribute('aria-expanded', this.state.ariaExpanded);
   }
   render() {
 
@@ -36,7 +36,7 @@ class Header extends Component {
 
       <header className="app-header">
         <div className="button-wrapper">
-          <button id="menu" className={menuClasses.join(' ')} type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="true/false" onClick={this.toggleActive.bind(this)}>
+          <button id="menu" className={menuClasses.join(' ')} type="button" aria-label="Menu" aria-controls="navigation" onClick={this.toggleActive.bind(this)}>
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
@@ -46,7 +46,7 @@ class Header extends Component {
         <h1 className="app-title">Japanese Restaurants in Warsaw</h1>
       </header>
     )
-    
+
   }
 }
 
