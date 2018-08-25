@@ -4,7 +4,7 @@ class Marker extends Component {
 
 
   render(){
-    const { windowOpen, openInfoWindow, allRestaurants, icon, markerID, restaurant, animate } = this.props
+    const { windowOpen, openInfoWindow,  markerID, restaurant  } = this.props
     let markerClass = ["marker"];
 
       if(windowOpen) {
@@ -26,4 +26,3 @@ class Marker extends Component {
 }
 
 export default Marker;
-// logging marker () => console.log(props.name, props.markerID)
