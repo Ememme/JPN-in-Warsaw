@@ -190,6 +190,10 @@ html {
   transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
   transform: translate3d(0, 10px, 0) rotate(-45deg);
 }
+/* --Map-- */
+.map {
+  margin-top: 0px;
+}
 /* --Marker-- */
 .marker {
 
@@ -302,6 +306,8 @@ li {
   display: flex;
   flex-direction: column;
   position: relative;
+  top: -150px;
+  right: -200px;
   cursor: pointer;
 }
 .close-infoWindow {

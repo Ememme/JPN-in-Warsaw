@@ -27,7 +27,7 @@ class Map extends Component {
 
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div className="map" style={{ height: '90vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyBGs0x8vuA1_EdLLtIQpFfoweEk2k-jcak' }}
           options={this.mapOptions.bind(this)}
@@ -38,6 +38,7 @@ class Map extends Component {
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
           allRestaurants={this.props.allRestaurants}
+          // Used for aria roles when fully loaded
           onTilesLoaded={() => {
             const loadedMap = document.querySelector('iframe');
             loadedMap.setAttribute('title', 'Japanese restaurants in Warsaw');
