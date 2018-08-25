@@ -190,10 +190,9 @@ html {
   transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
   transform: translate3d(0, 10px, 0) rotate(-45deg);
 }
-/* --Marker */
-/* **************** MARKER *********************** */
+/* --Marker-- */
 .marker {
-  /* backface-visibility: hidden; */
+
   perspective: 1000px;
   height: 40px;
   width: 40px;
@@ -303,6 +302,7 @@ li {
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 }
 .close-infoWindow {
   color: #B6072C;

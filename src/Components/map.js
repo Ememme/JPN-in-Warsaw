@@ -35,7 +35,6 @@ class Map extends Component {
 
           // center={this.state.center}
           defaultZoom={this.props.zoom}
-          // onClick={this.props.closeInfoWindow}
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
           allRestaurants={this.props.allRestaurants}
