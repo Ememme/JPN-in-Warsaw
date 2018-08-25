@@ -6,9 +6,6 @@ import mapStyle from './mapStyle.json'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import SideBar from './Components/SideBar'
-import Icon from './Assets/marker_black.svg'
-import RedIcon from './Assets/restaurant-locator-red.svg'
-
 import './App.css';
 
 class App extends Component {
@@ -32,7 +29,6 @@ class App extends Component {
     markerID: '',
      // restaurant connected to clicked marker
     selectedRestaurant: [],
-    icon: Icon
    };
 
   this.toggleMenu = this.toggleMenu.bind(this)
@@ -52,12 +48,12 @@ class App extends Component {
         return restaurant.restaurant.id === String(markerID)
       })
 
+
     console.log(`Clicked restaurant: ${place}`)
     this.setState({
       windowOpen: true,
       markerID: markerID,
       selectedRestaurant: place,
-      icon: RedIcon
     })
   }
 
@@ -66,7 +62,6 @@ class App extends Component {
       windowOpen: false,
       markerID: '',
       selectedRestaurant: [],
-      icon: RedIcon
     })
   }
   // @Function filters restaurant localised in a given districtRestaurants
@@ -74,8 +69,6 @@ class App extends Component {
   findRestaurant(value){
     console.log(`Sidebar value ${value}`)
     let all = this.state.allRestaurants
-    console.log(all)
-
     let districtRestaurantsF = all.filter((restaurant) => {
       if (value !== 'All') {
         return restaurant.restaurant.location.locality.includes(value)
@@ -170,6 +163,7 @@ class App extends Component {
           windowOpen={this.state.windowOpen}
           markerID={this.state.markerID}
           selectedRestaurant={this.state.selectedRestaurant}
+          animate={this.state.animate}
         />
           <Footer />
         </div>

@@ -190,7 +190,34 @@ html {
   transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
   transform: translate3d(0, 10px, 0) rotate(-45deg);
 }
+/* --Marker */
+/* **************** MARKER *********************** */
+.marker {
+  /* backface-visibility: hidden; */
+  perspective: 1000px;
+  height: 40px;
+  width: 40px;
+  background-image: url('./Assets/marker_black.svg');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
 
+.marker.bounce {
+  height: 40px;
+  width: 40px;
+  background-image: url('./Assets/marker_red.svg');
+  background-repeat: no-repeat;
+  animation: bounce 0.5s linear;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from { transform: translateY(5px);
+  }
+  to   { transform: translateY(15px);
+  }
+}
 /* --SideBar--*/
 .sidebar {
   display: block;

@@ -32,6 +32,7 @@ class Map extends Component {
           bootstrapURLKeys={{ key: 'AIzaSyBGs0x8vuA1_EdLLtIQpFfoweEk2k-jcak' }}
           options={this.mapOptions.bind(this)}
           defaultCenter={this.props.center}
+
           // center={this.state.center}
           defaultZoom={this.props.zoom}
           onClick={this.props.closeInfoWindow}
@@ -48,6 +49,7 @@ class Map extends Component {
                  lng={item.restaurant.location.longitude}
                  markerID={item.restaurant.R.res_id}
                  restaurant={this.props.selectedRestaurant}
+                 windowOpen={this.props.windowOpen}
                  openInfoWindow={this.props.openInfoWindow}
                  />
              )}

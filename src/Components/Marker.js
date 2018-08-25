@@ -1,19 +1,28 @@
-import React from 'react';
-import Icon from '../Assets/marker_black.svg'
-import RedIcon from '../Assets/restaurant-locator-red.svg'
+import React, { Component } from 'react';
 
-const Marker = props => {
+class Marker extends Component {
 
 
-  const { openInfoWindow, allRestaurants, icon } = props
+  render(){
+    const { windowOpen, openInfoWindow, allRestaurants, icon, markerID, restaurant, animate } = this.props
+    let markerClass = ["marker"];
+
+      if(windowOpen) {
+
+        let restaurantID = this.props.restaurant[0].restaurant.R.res_id
+        // Animate clicked marker via CSS class
+        if(this.props.markerID === restaurantID)  {
+          markerClass.push("bounce")
+        }
+      }
 
 
   return (
 
-		<div className="marker" onClick={() => openInfoWindow(props.markerID)} >
-    	<img src={Icon} alt="marker" tabIndex="0"/>
+		<div className={markerClass.join(' ')} onClick={() => openInfoWindow(this.props.markerID)} >
   	</div>
 	)
+  }
 }
 
 export default Marker;
