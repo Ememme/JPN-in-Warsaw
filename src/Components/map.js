@@ -50,6 +50,7 @@ class Map extends Component {
                  restaurant={this.props.selectedRestaurant}
                  windowOpen={this.props.windowOpen}
                  openInfoWindow={this.props.openInfoWindow}
+                 tabindex="0"
                  />
              )}
               {this.props.windowOpen &&
