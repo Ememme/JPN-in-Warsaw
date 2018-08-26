@@ -162,7 +162,6 @@ class App extends Component {
           windowOpen={this.state.windowOpen}
           markerID={this.state.markerID}
           selectedRestaurant={this.state.selectedRestaurant}
-          animate={this.state.animate}
           />
           <Footer />
         </div>
