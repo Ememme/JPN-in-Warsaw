@@ -33,7 +33,16 @@ class App extends Component {
 
   this.toggleMenu = this.toggleMenu.bind(this)
  }
-
+ // Function to check if map loaded correctly and set state accordingly
+  mapLoaded() {
+    setTimeout(() => {
+      const mapLoaded = document.querySelector('iframe');
+      if (!mapLoaded) {
+        this.setState({
+          error: true })
+      }
+    }, 1000);
+  }
   // Function handles state of menu in Header Component
   toggleMenu() {
     this.setState({
@@ -86,6 +95,7 @@ class App extends Component {
   componentDidMount() {
     console.log('---component did mount---')
     console.log(this.state)
+    this.mapLoaded()
     // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
     // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
     // Offset is 20
