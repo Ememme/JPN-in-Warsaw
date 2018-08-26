@@ -38,6 +38,12 @@ class Map extends Component {
           onChildMouseEnter={this.onChildMouseEnter}
           onChildMouseLeave={this.onChildMouseLeave}
           allRestaurants={this.props.allRestaurants}
+          // Adds aria info after loading completion
+          onTilesLoaded={() => {
+            const loadedMap = document.querySelector('iframe');
+            loadedMap.setAttribute('title', 'Japanese restaurants in Warsaw');
+            loadedMap.setAttribute('role', 'application');
+            }}
         >
 
           {/****************** MARKERS ********************/}
