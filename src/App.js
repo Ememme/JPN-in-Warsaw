@@ -145,7 +145,7 @@ class App extends Component {
 
           <Header toggleMenu={this.toggleMenu} menu={this.state.menuOpen}/>
           {/*SideBar will open depending on menuOpen value  */}
-          <div wrapper>
+          <div className="wrapper">
           {this.state.menuOpen &&
             <aside class="SideBar">
             <SideBar
