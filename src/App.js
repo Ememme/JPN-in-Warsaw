@@ -52,13 +52,10 @@ class App extends Component {
 
   // Function for opening window based on clicked marker, finds a restaurant that is connected to that marker location and sets it as state
   openInfoWindow(markerID) {
-    console.log(`Logging marker: ${markerID}`)
-      let place = this.state.districtRestaurants.filter((restaurant) => {
-        return restaurant.restaurant.id === String(markerID)
-      })
+    let place = this.state.districtRestaurants.filter((restaurant) => {
+      return restaurant.restaurant.id === String(markerID)
+    })
 
-
-    console.log(`Clicked restaurant: ${place}`)
     this.setState({
       windowOpen: true,
       markerID: markerID,
@@ -76,25 +73,22 @@ class App extends Component {
   // @Function filters restaurant localised in a given districtRestaurants
   // {params: value} is passed from SideBar Component
   findRestaurant(value){
-    console.log(`Sidebar value ${value}`)
     let all = this.state.allRestaurants
-    let districtRestaurantsF = all.filter((restaurant) => {
+    let districtFiltered = all.filter((restaurant) => {
       if (value !== 'All') {
         return restaurant.restaurant.location.locality.includes(value)
       } else {
         return all
       }
     });
-      console.log('Dictrict' + districtRestaurantsF.length)
       this.setState({
-        districtRestaurants: districtRestaurantsF,
+        districtRestaurants: districtFiltered,
       })
  }
 
 
   componentDidMount() {
     console.log('---component did mount---')
-    console.log(this.state)
     this.mapLoaded()
     // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
     // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
@@ -139,12 +133,8 @@ class App extends Component {
       }
   }
 
-
-
-
-
   render() {
-    // If fetching data from ZOMATO will take long, user will see some image
+    // If fetching data from ZOMATO will take long, user will see a screen
     console.log('--render--')
 
     if (this.state.isLoading) {
@@ -166,24 +156,19 @@ class App extends Component {
           {this.state.error &&
             <Error />
           }
-          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants} loading={this.state.isLoading}
-          // icon={this.state.icon}
-         openInfoWindow={this.openInfoWindow.bind(this)}
-         closeInfoWindow={this.closeInfoWindow.bind(this)}
+          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
+          openInfoWindow={this.openInfoWindow.bind(this)}
+          closeInfoWindow={this.closeInfoWindow.bind(this)}
           windowOpen={this.state.windowOpen}
           markerID={this.state.markerID}
           selectedRestaurant={this.state.selectedRestaurant}
           animate={this.state.animate}
-        />
+          />
           <Footer />
         </div>
         )
     }
-
   }
-
-
-
 }
 
 export default App;
