@@ -13,9 +13,9 @@ class SideBar extends Component {
       <div className='sidebar'
         onChange={this.handleOnChange.bind(this)}
         >
-        <div className='sidebar-heading'><h2 aria-level="2">List of restaurants</h2></div>
+        <div className='sidebar-heading'><h2 className="restaurant-list">List of restaurants</h2></div>
         <div className="district-selection">
-          <select value={this.props.districtRestaurants} aria-label="Dropdown menu: filter by district" role="listbox" >
+          <select value={this.props.districtRestaurants} aria-label="Dropdown menu: filter by district" >
           <option value="blank" disabled>Find a restaurant in your area</option>
           <option value="All">All</option>
           <option value="Śródmieście Północne">Śródmieście Północne</option>
