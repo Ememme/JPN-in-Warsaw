@@ -41,7 +41,7 @@ class App extends Component {
         this.setState({
           error: true })
       }
-    }, 1000);
+    }, 4000);
   }
   // Function handles state of menu in Header Component
   toggleMenu() {
