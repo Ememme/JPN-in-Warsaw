@@ -29,7 +29,10 @@ class SideBar extends Component {
               {this.props.locations.map(item =>
               <li key={item.restaurant.R.res_id}
                 onClick={() => openInfoWindow(item.restaurant.R.res_id)}
-                className='location'>
+                className='location'
+                aria-label={item.restaurant.name}
+                role="button"
+                tabIndex="0">
                 <h3 className='location-name'>
                   {item.restaurant.name}
                 </h3>
