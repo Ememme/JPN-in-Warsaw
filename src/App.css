@@ -235,6 +235,15 @@ html {
 
 }
 
+.district-selection select {
+  border: none;
+  font-size: 18px;
+  height: 30px;
+  padding: 5px;
+  width: 200px;
+  border-radius: 5px;
+}
+
 ul.district-restaurants {
   list-style-type: none;
   padding-left: 0px;
