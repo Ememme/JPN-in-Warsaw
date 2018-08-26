@@ -23,8 +23,7 @@ class Map extends Component {
   }
 
   render() {
-    const { allRestaurants, loading, openInfoWindow } = this.props
-    console.log(allRestaurants)
+    const { allRestaurants } = this.props
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '90vh', width: '100%' }}>
