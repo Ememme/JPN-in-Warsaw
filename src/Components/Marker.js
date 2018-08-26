@@ -4,7 +4,7 @@ class Marker extends Component {
 
 
   render(){
-    const { windowOpen, openInfoWindow, allRestaurants, icon, markerID, restaurant, animate } = this.props
+    const { windowOpen, openInfoWindow, allRestaurants, markerID, restaurant,  } = this.props
     let markerClass = ["marker"];
 
       if(windowOpen) {
