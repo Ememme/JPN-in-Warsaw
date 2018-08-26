@@ -142,9 +142,12 @@ class App extends Component {
     } else {
       return (
         <div className="App">
+
           <Header toggleMenu={this.toggleMenu} menu={this.state.menuOpen}/>
           {/*SideBar will open depending on menuOpen value  */}
+          <div wrapper>
           {this.state.menuOpen &&
+            <aside class="SideBar">
             <SideBar
               menuOpen={this.state.menuOpen}
               locations={this.state.districtRestaurants}
@@ -152,6 +155,7 @@ class App extends Component {
               openInfoWindow={this.openInfoWindow.bind(this)}
               closeInfoWindow={this.closeInfoWindow.bind(this)}
             />
+            </aside>
           }
           {this.state.error &&
             <Error />
@@ -164,6 +168,7 @@ class App extends Component {
           selectedRestaurant={this.state.selectedRestaurant}
           />
           <Footer />
+        </div>
         </div>
         )
     }

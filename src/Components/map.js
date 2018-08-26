@@ -26,7 +26,7 @@ class Map extends Component {
     const { allRestaurants } = this.props
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div className="map" style={{ height: '90vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyBGs0x8vuA1_EdLLtIQpFfoweEk2k-jcak' }}
           options={this.mapOptions.bind(this)}
