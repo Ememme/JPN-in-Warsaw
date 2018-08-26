@@ -147,7 +147,7 @@ class App extends Component {
           {/*SideBar will open depending on menuOpen value  */}
           <div className="wrapper">
           {this.state.menuOpen &&
-            <aside class="SideBar">
+            <aside className="sidebar">
             <SideBar
               menuOpen={this.state.menuOpen}
               locations={this.state.districtRestaurants}
@@ -161,6 +161,7 @@ class App extends Component {
             <Error />
           }
           <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
+          menuOpen={this.state.menuOpen}
           openInfoWindow={this.openInfoWindow.bind(this)}
           closeInfoWindow={this.closeInfoWindow.bind(this)}
           windowOpen={this.state.windowOpen}

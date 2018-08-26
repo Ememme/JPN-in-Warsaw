@@ -377,6 +377,12 @@ li {
   .map {
     order: -1;
     width: 100vw;
+    height: 100vh;
+  }
+
+  .active-sidebar {
+    order: -1;
+    width: 100vw;
     height: 50vh;
   }
 

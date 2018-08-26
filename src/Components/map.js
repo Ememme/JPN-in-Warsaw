@@ -23,10 +23,15 @@ class Map extends Component {
   }
 
   render() {
-    const { allRestaurants } = this.props
+    const { allRestaurants, menuOpen } = this.props
+
+    let mapClasses = ["map"];
+    if (this.props.menuOpen) {
+      mapClasses.push("active-sidebar");
+    }
     return (
       // Important! Always set the container height explicitly
-      <div className="map" >
+      <div className={mapClasses.join(' ')} >
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyBGs0x8vuA1_EdLLtIQpFfoweEk2k-jcak' }}
           options={this.mapOptions.bind(this)}
