@@ -3,23 +3,19 @@ import React, { Component} from 'react'
 class SideBar extends Component {
 
   handleOnChange(event) {
-    console.log(event.target.value)
     this.props.filter(event.target.value)
   }
 
-
-
   render() {
-    console.log('Locations', this.props.locations)
     const { openInfoWindow } = this.props
     return (
 
       <div className='sidebar'
         onChange={this.handleOnChange.bind(this)}
         >
-        <div className='sidebar-heading'><h2>List of restaurants</h2></div>
+        <div className='sidebar-heading'><h2 aria-level="2">List of restaurants</h2></div>
         <div className="district-selection">
-          <select value={this.props.districtRestaurants} aria-label="Find by district" >
+          <select value={this.props.districtRestaurants} aria-label="Dropdown menu: filter by district" role="listbox" >
           <option value="blank" disabled>Find a restaurant in your area</option>
           <option value="All">All</option>
           <option value="Śródmieście Północne">Śródmieście Północne</option>
@@ -29,14 +25,14 @@ class SideBar extends Component {
           </select>
       </div>
 
-        <ul className='district-restaurants' >
+        <ul className='district-restaurants' aria-label="List of restaurants" >
               {this.props.locations.map(item =>
               <li key={item.restaurant.R.res_id}
                 onClick={() => openInfoWindow(item.restaurant.R.res_id)}
                 className='location'>
-                <h4 className='location-name'>
+                <h3 className='location-name'>
                   {item.restaurant.name}
-                </h4>
+                </h3>
 
               </li>)}
         </ul>
