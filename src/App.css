@@ -25,6 +25,7 @@ body {
 }
 
 .map {
+  position: relative;
   height: calc(100vh - 100px);
   /* width: calc(100vw - 25vw); */
   border: 1px solid red;
@@ -383,14 +384,15 @@ li {
   .active-sidebar {
     order: -1;
     width: 100vw;
-    height: 50vh;
+    height: 45vh;
   }
 
   .sidebar {
     order: 1;
     width: 100vw;
-    height: 50vh;
+    height: 45vh;
     font-size: 0.8rem;
+    position: relative;
   }
 
   .district-selection select {
