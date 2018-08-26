@@ -5,7 +5,7 @@ const Footer = () => {
   return (
       <div className='footer'>
         <div className='footer-left'>
-          <p>Designed by <em>MagdaM</em> <a href="https://www.linkedin.com/in/magdamieczynska/" aria-label="See linkedin Profile"></a></p>
+          <p id="author">Designed by <a href="https://www.linkedin.com/in/magdamieczynska/" aria-label="See linkedin Profile"><em>MagdaM</em></a></p>
         </div>
         <div className='footer-credits'>
            <p> Data by <img src={Zomato} alt="Zomato logo"/>
