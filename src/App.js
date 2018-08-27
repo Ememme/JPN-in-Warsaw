@@ -17,7 +17,7 @@ class App extends Component {
     menuOpen: false,
      // data from ZomatoAPI
     allRestaurants: [],
-     // indication of error while loading ZomatoAPI
+     // indication of error while loading ZomatoAPI and GoogleMaps
     error: false,
      // manages Loading Component
     isLoading: true,
@@ -101,7 +101,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log('---component did mount---')
+    // console.log('---component did mount---')
     this.mapLoaded()
     // Fetching data about Japanese restaurants in Warsaw from ZOMATO API.catch
     // As ZomatoAPI is turning results in batches of 20, loop is used to get info about all restaurants in the city.
@@ -148,7 +148,7 @@ class App extends Component {
 
   render() {
     // If fetching data from ZOMATO will take long, user will see a screen
-    console.log('--render--')
+    // console.log('--render--')
 
     if (this.state.isLoading) {
       return <Loading />
@@ -172,7 +172,10 @@ class App extends Component {
             />
             </aside>
           }
-            <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
+            <Map
+            style={mapStyle}
+            allRestaurants={this.state.districtRestaurants}
+            loading={this.state.isLoading}
             menuOpen={this.state.menuOpen}
             openInfoWindow={this.openInfoWindow.bind(this)}
             closeInfoWindow={this.closeInfoWindow.bind(this)}
