@@ -25,6 +25,7 @@ class Header extends Component {
     });
     const menuButton = document.getElementById("menu");
     menuButton.setAttribute('aria-expanded', this.state.ariaExpanded);
+
   }
   render() {
 

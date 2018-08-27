@@ -26,7 +26,7 @@ body {
 
 .map {
   /* position: relative; */
-  height: calc(100vh - 100px);
+  height: 95vh;
   width: 100%;
   /* width: calc(100vw - 25vw); */
   border: 1px solid red;
@@ -92,6 +92,7 @@ body {
 
 /* --ERROR Component */
 .error {
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -242,7 +243,7 @@ body {
 .sidebar {
   display: block;
   position: absolute;
-  height: 85vh;
+  height: 90vh;
   width: 25vw;
   border: 1px solid blue;
   background-color: #142b48;
@@ -269,6 +270,7 @@ body {
 ul.district-restaurants {
   list-style-type: none;
   padding-left: 0px;
+  border: 1px solid red;
 }
 
 li {
