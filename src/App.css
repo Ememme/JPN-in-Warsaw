@@ -278,6 +278,7 @@ li {
   border: 1px solid #142b48;
 }
 .location:hover,
+.location:focus,
 .location:active {
   background-color: white;
   color: #142b48;
