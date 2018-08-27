@@ -44,9 +44,12 @@ class Map extends Component {
           allRestaurants={this.props.allRestaurants}
           // Adds aria info after loading completion
           onTilesLoaded={() => {
+
             const loadedMap = document.querySelector('iframe');
-            loadedMap.setAttribute('title', 'Japanese restaurants in Warsaw');
-            loadedMap.setAttribute('role', 'application');
+            if(loadedMap !== null){
+              loadedMap.setAttribute('title', 'Japanese restaurants in Warsaw');
+              loadedMap.setAttribute('role', 'application');
+              }
             }}
         >
 
@@ -63,7 +66,7 @@ class Map extends Component {
                  />
              )}
               {this.props.windowOpen &&
-               <InfoWindow key={this.props.id} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} closeWindow={this.props.closeInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen} />
+               <InfoWindow key={this.props.markerID} restaurant={this.props.selectedRestaurant} openWindow={this.props.openInfoWindow} closeWindow={this.props.closeInfoWindow} marker={this.props.markerID} windowOpen={this.props.windowOpen} />
              }
 
         </GoogleMapReact>

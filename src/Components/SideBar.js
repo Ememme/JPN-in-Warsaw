@@ -7,7 +7,7 @@ class SideBar extends Component {
   }
 
   render() {
-    const { openInfoWindow, emulateClick } = this.props
+    const { openInfoWindow, emulateClick} = this.props
     return (
 
       <div className='sidebar'
