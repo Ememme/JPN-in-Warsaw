@@ -39,9 +39,13 @@ class App extends Component {
       const mapLoaded = document.querySelector('iframe');
       if (!mapLoaded) {
         this.setState({
-          error: true })
+          error: true
+        })
+        console.log('Google map error')  
       }
-    }, 4000);
+
+    }, 5000);
+
   }
   // Function handles state of menu in Header Component
   toggleMenu() {
@@ -157,9 +161,7 @@ class App extends Component {
             />
             </aside>
           }
-          {this.state.error &&
-            <Error />
-          }
+
           <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
           menuOpen={this.state.menuOpen}
           openInfoWindow={this.openInfoWindow.bind(this)}
@@ -169,7 +171,11 @@ class App extends Component {
           selectedRestaurant={this.state.selectedRestaurant}
           />
           <Footer />
+
         </div>
+        {this.state.error &&
+          <Error />
+        }
         </div>
         )
     }
