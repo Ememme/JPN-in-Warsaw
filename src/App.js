@@ -93,6 +93,10 @@ class App extends Component {
     let code = event.keyCode || event.which;
     if (code === 13) {
       event.target.click();
+    } else if (this.state.windowOpen) {
+      this.setState({
+        windowOpen: false,
+      });
     }
   };
 
