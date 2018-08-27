@@ -7,14 +7,16 @@ class SideBar extends Component {
   }
 
   render() {
-    const { openInfoWindow } = this.props
+    const { openInfoWindow, emulateClick } = this.props
     return (
 
       <div className='sidebar'
         onChange={this.handleOnChange.bind(this)}
         >
-        <div className='sidebar-heading'><h2 className="restaurant-list">List of restaurants</h2></div>
-        <div className="district-selection">
+        <div className='sidebar-heading'>
+          <h2 className="restaurant-list">List of restaurants</h2>
+        </div>
+        <div className="district-selection" >
           <select value={this.props.districtRestaurants} aria-label="Dropdown menu: filter by district" >
           <option value="blank" disabled>Find a restaurant in your area</option>
           <option value="All">All</option>
@@ -32,7 +34,8 @@ class SideBar extends Component {
                 className='location'
                 aria-label={item.restaurant.name}
                 role="button"
-                tabIndex="0">
+                tabIndex="0"
+                onKeyPress={this.props.emulateClick}>
                 <h3 className='location-name'>
                   {item.restaurant.name}
                 </h3>

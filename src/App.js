@@ -41,11 +41,9 @@ class App extends Component {
         this.setState({
           error: true
         })
-        console.log('Google map error')  
+        console.log('Google map error')
       }
-
-    }, 5000);
-
+    }, 10000);
   }
   // Function handles state of menu in Header Component
   toggleMenu() {
@@ -89,7 +87,14 @@ class App extends Component {
         districtRestaurants: districtFiltered,
       })
  }
-
+ // Function to emulate click in SideBar Component with a keyboard
+ // based on this example https://stackoverflow.com/questions/39442419/reactjs-is-there-a-way-to-trigger-a-method-by-pressing-the-enter-key-inside
+  emulateClick(event) {
+    let code = event.keyCode || event.which;
+    if (code === 13) {
+      event.target.click();
+    }
+  };
 
   componentDidMount() {
     console.log('---component did mount---')
@@ -143,12 +148,13 @@ class App extends Component {
 
     if (this.state.isLoading) {
       return <Loading />
+    } else if(this.state.error) {
+      return <Error />
     } else {
       return (
         <div className="App">
-
           <Header toggleMenu={this.toggleMenu} menu={this.state.menuOpen}/>
-          {/*SideBar will open depending on menuOpen value  */}
+            {/*SideBar will open depending on menuOpen value  */}
           <div className="wrapper">
           {this.state.menuOpen &&
             <aside className="sidebar">
@@ -158,24 +164,20 @@ class App extends Component {
               filter={this.findRestaurant.bind(this)}
               openInfoWindow={this.openInfoWindow.bind(this)}
               closeInfoWindow={this.closeInfoWindow.bind(this)}
+              emulateClick={this.emulateClick.bind(this)}
             />
             </aside>
           }
-
-          <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
-          menuOpen={this.state.menuOpen}
-          openInfoWindow={this.openInfoWindow.bind(this)}
-          closeInfoWindow={this.closeInfoWindow.bind(this)}
-          windowOpen={this.state.windowOpen}
-          markerID={this.state.markerID}
-          selectedRestaurant={this.state.selectedRestaurant}
-          />
-          <Footer />
-
-        </div>
-        {this.state.error &&
-          <Error />
-        }
+            <Map style={mapStyle} allRestaurants={this.state.districtRestaurants}   loading={this.state.isLoading}
+            menuOpen={this.state.menuOpen}
+            openInfoWindow={this.openInfoWindow.bind(this)}
+            closeInfoWindow={this.closeInfoWindow.bind(this)}
+            windowOpen={this.state.windowOpen}
+            markerID={this.state.markerID}
+            selectedRestaurant={this.state.selectedRestaurant}
+            />
+            <Footer />
+          </div>
         </div>
         )
     }
