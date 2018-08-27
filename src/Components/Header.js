@@ -37,7 +37,7 @@ class Header extends Component {
 
       <header className="app-header">
         <div className="button-wrapper">
-          <button id="menu" className={menuClasses.join(' ')} type="button" aria-label="Menu" aria-controls="navigation" onClick={this.toggleActive.bind(this)}>
+          <button id="menu" className={menuClasses.join(' ')} type="button" aria-label="Toggle Menu" aria-expanded="false">
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
