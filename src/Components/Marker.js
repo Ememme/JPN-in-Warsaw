@@ -19,11 +19,10 @@ class Marker extends Component {
 
   return (
 
-		<div className={markerClass.join(' ')} onClick={() => openInfoWindow(this.props.markerID)} >
+		<div className={markerClass.join(' ')} onClick={() => openInfoWindow(this.props.markerID)} tabIndex="0" >
   	</div>
 	)
   }
 }
 
 export default Marker;
-// logging marker () => console.log(props.name, props.markerID)
