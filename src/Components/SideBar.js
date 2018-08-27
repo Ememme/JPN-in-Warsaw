@@ -18,8 +18,8 @@ class SideBar extends Component {
           <select value={this.props.districtRestaurants} aria-label="Dropdown menu: filter by district" >
           <option value="blank" disabled>Find a restaurant in your area</option>
           <option value="All">All</option>
-          <option value="Śródmieście Północne">Śródmieście Północne</option>
-          <option value="Śródmieście Południowe">Śródmieście Południowe</option>
+          <option value="Śródmieście Północne">Śródmieście Płn</option>
+          <option value="Śródmieście Południowe">Śródmieście Pd</option>
           <option value="Powiśle">Powiśle</option>
           <option value="Wola">Wola</option>
           </select>
